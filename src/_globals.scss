@@ -1,0 +1,55 @@
+@use 'helpers/mixins' as *;
+
+html {
+  &.is-lock {
+    overflow: hidden;
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family-base), sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--base-color);
+  background-color: var(--light-color);
+}
+
+h1,
+.h1 {
+  @include fluid-text(64, 28);
+
+  font-weight: 600;
+  line-height: 1.2;
+  text-transform: var(--text-transform-base);
+  color: var(--dark-color);
+}
+
+h2,
+.h2 {
+  @include fluid-text(48, 24);
+
+  font-weight: 600;
+  text-transform: var(--text-transform-base);
+}
+
+a,
+button,
+label,
+input,
+textarea,
+select,
+svg * {
+  transition-duration: var(--transition-duration);
+  text-transform: var(--text-transform-base);
+}
+
+.todo__main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+

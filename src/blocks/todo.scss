@@ -1,0 +1,70 @@
+@use '../helpers/mixins' as*;
+
+.todo {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+  }
+
+  &__theme{
+    padding: 15px 8px;
+    background-color: var(--base-color);
+    color: var(--light-color);
+    border-radius: var(--border-radius);
+
+    svg{
+      color: var(--light-color);
+    }
+  }
+}
+
+.field {
+  position: relative;
+  margin: 50px auto;
+  width: 600px;
+  align-content: center;
+
+  &__label {
+    position: absolute;
+    top: 16px;
+    left: 8px;
+    color: var(--label-color);
+    pointer-events: none;
+
+  }
+
+  &__input {
+    width: 100%;
+    border: 1px solid var(--base-color);
+    border-radius: var(--border-radius);
+    padding: 16px 8px;
+    background-color: transparent;
+    outline: none;
+  }
+
+
+  &__button {
+    position: absolute;
+    top: 16px;
+    right: 8px;
+  }
+}
+
+.select__items {
+  padding: 16px 8px;
+  background-color: var(--base-color);
+  color: var(--light-color);
+  border-radius: var(--border-radius);
+  outline: none;
+}
+
+
+
+
+
