@@ -1,0 +1,9 @@
+.module__empty {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-size: 20px;
+  color: var(--dark-color);
+}

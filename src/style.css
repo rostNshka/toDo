@@ -1,17 +1,372 @@
-/* Error: Can't find stylesheet to import.
- *   ,
- * 1 | @use "globals";
- *   | ^^^^^^^^^^^^^^
- *   '
- *   style.scss 1:1  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @use \"globals\";\d\a   \2502  ^^^^^^^^^^^^^^\a   \2575 \a   style.scss 1:1  root stylesheet";
+@charset "UTF-8";
+html.is-lock {
+  overflow: hidden;
 }
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family-base), sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--base-color);
+  background-color: var(--light-color);
+}
+
+h1,
+.h1 {
+  font-size: clamp(1.75rem, 0.7640449438rem + 4.0449438202vw, 4rem);
+  font-weight: 600;
+  line-height: 1.2;
+  text-transform: var(--text-transform-base);
+  color: var(--dark-color);
+}
+
+h2,
+.h2 {
+  font-size: clamp(1.5rem, 0.8426966292rem + 2.6966292135vw, 3rem);
+  font-weight: 600;
+  text-transform: var(--text-transform-base);
+}
+
+a,
+button,
+label,
+input,
+textarea,
+select,
+svg * {
+  transition-duration: var(--transition-duration);
+  text-transform: var(--text-transform-base);
+}
+
+.todo__main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/**
+  Нормализация блочной модели
+ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/**
+  Убираем внутренние отступы слева тегам списков,
+  у которых есть атрибут class
+ */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+  Убираем внешние отступы body и двум другим тегам,
+  у которых есть атрибут class
+ */
+body,
+:where(blockquote, figure, fieldset):where([class]) {
+  margin: 0;
+}
+
+/**
+  Убираем внешние отступы вертикали нужным тегам,
+  у которых есть атрибут class
+ */
+:where(h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  padding: 0;
+  border: none;
+}
+
+/**
+  Убираем стандартный маркер маркированному списку,
+  у которого есть атрибут class
+ */
+:where(ul[class]) {
+  list-style: none;
+}
+
+:where(address[class]) {
+  font-style: normal;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/**
+  Обнуляем вертикальные внешние отступы параграфа,
+  объявляем локальную переменную для внешнего отступа вниз,
+  чтобы избежать взаимодействие с более сложным селектором
+ */
+p {
+  --paragraphMarginBottom: 24px;
+  margin-block: 0;
+}
+
+/**
+  Внешний отступ вниз для параграфа без атрибута class,
+  который расположен не последним среди своих соседних элементов
+ */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+  Упрощаем работу с изображениями и видео
+ */
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/**
+  Наследуем свойства шрифт для полей ввода
+ */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  height: 100%;
+  /**
+    Убираем скачок интерфейса по горизонтали
+    при появлении / исчезновении скроллбара
+   */
+  scrollbar-gutter: stable;
+  /**
+    Плавный скролл
+   */
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  min-height: 100%;
+  /**
+    Унифицированный интерлиньяж
+   */
+  line-height: 1.5;
+}
+
+/**
+  Нормализация высоты элемента ссылки при его инспектировании в DevTools
+ */
+a:where([class]) {
+  display: inline-flex;
+}
+
+/**
+  Курсор-рука при наведении на элемент
+ */
+button,
+label {
+  cursor: pointer;
+}
+
+/**
+  Убирает серую подсветку при тапе на мобильных устройствах (iOS/Android)
+ */
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+  (за исключением тех, у которых уже указан
+  атрибут fill со значением 'none' или начинается с 'url')
+ */
+:where([fill]:not([fill=none],
+[fill^=url])) {
+  fill: currentColor;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+  (за исключением тех, у которых уже указан
+  атрибут stroke со значением 'none')
+ */
+:where([stroke]:not([stroke=none],
+[stroke^=url])) {
+  stroke: currentColor;
+}
+
+/**
+  Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+ */
+svg * {
+  transition-property: fill, stroke;
+}
+
+:where(table) {
+  border-collapse: collapse;
+  border-color: currentColor;
+}
+
+/**
+  Удаляем все анимации и переходы для людей,
+  которые предпочитают их не использовать
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+.container {
+  width: 766px;
+}
+
+:root {
+  --base-color: #6C63FF;
+  --dark-color: #252525;
+  --light-color: #F7F7F7;
+  --label-color: #C3C1E5;
+  --border-radius: 5px;
+  --transition-duration: 0.2s;
+  --font-family-base: "Kanit";
+  --text-transform-base: uppercase;
+}
+
+@font-face {
+  font-family: "Kanit";
+  src: url("assets/fonts/Kanit.ttf") format("truetype-variations");
+  font-weight: 400;
+  font-style: normal;
+}
+.todo {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.todo button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.todo__theme {
+  padding: 15px 8px;
+  background-color: var(--base-color);
+  color: var(--light-color);
+  border-radius: var(--border-radius);
+}
+.todo__theme svg {
+  color: var(--light-color);
+}
+
+.field {
+  position: relative;
+  margin: 50px auto;
+  width: 600px;
+  align-content: center;
+}
+.field__label {
+  position: absolute;
+  top: 16px;
+  left: 8px;
+  color: var(--label-color);
+  pointer-events: none;
+}
+.field__input {
+  width: 100%;
+  border: 1px solid var(--base-color);
+  border-radius: var(--border-radius);
+  padding: 16px 8px;
+  background-color: transparent;
+  outline: none;
+}
+.field__button {
+  position: absolute;
+  top: 16px;
+  right: 8px;
+}
+
+.select__items {
+  padding: 16px 8px;
+  background-color: var(--base-color);
+  color: var(--light-color);
+  border-radius: var(--border-radius);
+  outline: none;
+}
+
+.module__empty {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-size: 20px;
+  color: var(--dark-color);
+}
+
+.todo__list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.todo__list .todo__item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--base-color);
+  color: var(--dark-color);
+}
+
+.todo_button-new-note {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.todo_button-new-note .new-note__button {
+  padding-top: 5px;
+  position: fixed;
+  bottom: 100px;
+  right: 500px;
+  border-radius: 50%;
+  background-color: var(--base-color);
+}
+.todo_button-new-note .new-note__button svg {
+  color: var(--light-color);
+}
+
+/*# sourceMappingURL=style.css.map */
