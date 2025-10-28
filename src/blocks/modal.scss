@@ -8,9 +8,10 @@
   visibility: hidden;
   overflow: hidden;
   opacity: 0;
+  transition: all 0.5s ease;
+  backdrop-filter: blur(10px);
 
   &__container {
-    background-color: white;
     position: relative;
     width: 800px;
     margin: 250px auto;
