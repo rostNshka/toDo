@@ -9,7 +9,7 @@ body {
   font-family: var(--font-family-base), sans-serif;
   font-size: 16px;
   font-weight: 400;
-  color: var(--base-color);
+  color: var(--dark-color);
   background-color: var(--light-color);
 }
 
@@ -19,7 +19,6 @@ h1,
   font-weight: 600;
   line-height: 1.2;
   text-transform: var(--text-transform-base);
-  color: var(--dark-color);
 }
 
 h2,
@@ -46,6 +45,16 @@ svg * {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+}
+
+.theme__dark {
+  background-color: var(--dark-color);
+  color: var(--light-color);
+}
+
+.theme__light {
+  background-color: var(--light-color);
+  color: var(--dark-color);
 }
 
 /**
@@ -348,7 +357,6 @@ svg * {
   flex-direction: row;
   justify-content: space-between;
   border-bottom: 1px solid var(--base-color);
-  color: var(--dark-color);
 }
 
 .todo_button-new-note {
