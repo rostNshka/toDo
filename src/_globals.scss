@@ -41,7 +41,7 @@ textarea,
 select,
 svg * {
   transition-duration: var(--transition-duration);
-  text-transform: var(--text-transform-base);
+  text-transform: none;
 }
 
 .todo__main {

@@ -36,7 +36,7 @@ textarea,
 select,
 svg * {
   transition-duration: var(--transition-duration);
-  text-transform: var(--text-transform-base);
+  text-transform: none;
 }
 
 .todo__main {
@@ -351,12 +351,43 @@ svg * {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  list-style: none;
 }
-.todo__list .todo__item {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+.todo__list li {
+  position: relative;
   border-bottom: 1px solid var(--base-color);
+  padding-bottom: 8px;
+  padding-left: 64px;
+}
+.todo__list .checked::before {
+  border-color: var(--base-color);
+  background-color: var(--base-color);
+  cursor: pointer;
+}
+.todo__list .checked::after {
+  content: "✔";
+  position: absolute;
+  top: -1px;
+  left: 4px;
+  cursor: pointer;
+}
+
+li::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  border: 1px solid var(--base-color);
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.checked {
+  text-decoration: line-through;
+  color: var(--label-color);
 }
 
 .todo_button-new-note {

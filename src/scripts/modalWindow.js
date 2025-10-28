@@ -15,6 +15,8 @@ class ModalWindow {
     closeModal() {
         this.modalWindow.style.visibility = 'hidden';
         this.modalWindow.style.opacity = '0';
+        this.labelModal.style.visibility = 'visible'
+        this.inputModal.value = '';
     }
     init(){
         this.buttonModal.addEventListener('click', () => {
@@ -26,8 +28,8 @@ class ModalWindow {
         this.inputModal.addEventListener('focus', () => {
             this.labelModal.style.visibility = 'hidden';
         })
-        this.inputModal.addEventListener('blur', () => {
-            if(this.inputModal.value === ''){
+        this.inputModal.addEventListener('focusout, blur', () => {
+            if(this.inputModal.value === '' ){
                 this.labelModal.style.visibility = 'visible'
             }
         })
