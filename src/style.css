@@ -369,4 +369,70 @@ svg * {
   color: var(--light-color);
 }
 
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  overflow: hidden;
+  opacity: 0;
+}
+.modal__container {
+  background-color: white;
+  position: relative;
+  width: 800px;
+  margin: 250px auto;
+  transition: all 0.5s ease;
+  border-radius: var(--border-radius);
+}
+
+.new-note {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 128px 0;
+}
+.new-note__title {
+  color: var(--dark-color);
+}
+.new-note__form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+.new-note__label {
+  position: absolute;
+  color: var(--label-color);
+  pointer-events: none;
+  z-index: 100;
+  padding: 16px;
+}
+.new-note__input {
+  position: relative;
+  border: 1px solid var(--base-color);
+  border-radius: var(--border-radius);
+  padding: 16px 8px;
+  background-color: transparent;
+  outline: none;
+  width: 600px;
+}
+.new-note__utils {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+.new-note button {
+  padding: 15px 8px;
+  background-color: var(--base-color);
+  color: var(--light-color);
+  border-radius: var(--border-radius);
+  border: none;
+  width: 100px;
+}
+
 /*# sourceMappingURL=style.css.map */
