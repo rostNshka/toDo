@@ -308,6 +308,15 @@ svg * {
   width: 600px;
   align-content: center;
 }
+.field ::after {
+  content: "⌕";
+  position: absolute;
+  top: 0;
+  left: 555px;
+  background-color: transparent;
+  cursor: pointer;
+  scale: 2;
+}
 .field__label {
   position: absolute;
   top: 16px;

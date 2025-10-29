@@ -30,6 +30,16 @@
   width: 600px;
   align-content: center;
 
+  ::after{
+    content: '\2315';
+    position: absolute;
+    top: 0;
+    left: 555px;
+    background-color: transparent;
+    cursor: pointer;
+    scale: 2;
+  }
+
   &__label {
     position: absolute;
     top: 16px;
