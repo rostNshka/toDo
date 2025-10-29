@@ -42,6 +42,7 @@ select,
 svg * {
   transition-duration: var(--transition-duration);
   text-transform: none;
+  user-select: none;
 }
 
 .todo__main {

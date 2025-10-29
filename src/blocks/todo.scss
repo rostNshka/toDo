@@ -30,23 +30,23 @@
   width: 600px;
   align-content: center;
 
+
   ::after{
     content: '\2315';
     position: absolute;
+    cursor: pointer;
     top: 0;
     left: 555px;
     background-color: transparent;
-    cursor: pointer;
     scale: 2;
   }
+
 
   &__label {
     position: absolute;
     top: 16px;
     left: 8px;
     color: var(--label-color);
-    pointer-events: none;
-
   }
 
   &__input {
@@ -57,13 +57,6 @@
     background-color: transparent;
     outline: none;
   }
-
-
-  &__button {
-    position: absolute;
-    top: 16px;
-    right: 8px;
-  }
 }
 
 .select__items {
@@ -73,8 +66,6 @@
   border-radius: var(--border-radius);
   outline: none;
 }
-
-
 
 
 

@@ -37,6 +37,7 @@ select,
 svg * {
   transition-duration: var(--transition-duration);
   text-transform: none;
+  user-select: none;
 }
 
 .todo__main {
@@ -311,10 +312,10 @@ svg * {
 .field ::after {
   content: "⌕";
   position: absolute;
+  cursor: pointer;
   top: 0;
   left: 555px;
   background-color: transparent;
-  cursor: pointer;
   scale: 2;
 }
 .field__label {
@@ -322,7 +323,6 @@ svg * {
   top: 16px;
   left: 8px;
   color: var(--label-color);
-  pointer-events: none;
 }
 .field__input {
   width: 100%;
@@ -331,11 +331,6 @@ svg * {
   padding: 16px 8px;
   background-color: transparent;
   outline: none;
-}
-.field__button {
-  position: absolute;
-  top: 16px;
-  right: 8px;
 }
 
 .select__items {
@@ -379,6 +374,19 @@ svg * {
   top: -1px;
   left: 4px;
   cursor: pointer;
+}
+.todo__list span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  scale: 2;
+  color: var(--label-color);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+.todo__list span:hover {
+  color: red;
 }
 
 li::before {
