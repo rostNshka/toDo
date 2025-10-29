@@ -23,7 +23,7 @@ class AddNote {
                 alert('Введите данные')
             } else {
                 this.li.innerHTML = this.addInput.value
-                this.list.appendChild(this.li)
+                this.list.prepend(this.li)
                 this.addInput.value = ''
 
                 this.span = document.createElement('span')

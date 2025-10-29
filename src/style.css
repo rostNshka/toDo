@@ -58,6 +58,10 @@ svg * {
   color: var(--dark-color);
 }
 
+.hide {
+  display: none;
+}
+
 /**
   Нормализация блочной модели
  */
