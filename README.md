@@ -39,5 +39,7 @@ Vite
 Добавление скриптов и логики \
 Ручная тестировка сайта
 
+<img width="1026" height="876" alt="image" src="https://github.com/user-attachments/assets/e2ff4cc4-9d4a-4dc0-9ee0-ef4ccf62aa00" />
+<img width="825" height="418" alt="image" src="https://github.com/user-attachments/assets/812477bf-24cd-443f-bd86-a1c846bc7710" />
 
 Ростислав Зайцев
